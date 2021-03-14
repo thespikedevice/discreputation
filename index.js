@@ -4,6 +4,7 @@ const fs=require("fs")
 var client=new discord.Client()
 const onmessage=require("./filters/onmessage.js")
 const ondelete=require("./filters/ondelete.js")
+var invites={}
 
 client.on("messageUpdate", (oldmsg, newmsg)=>{
   if (!oldmsg.author.bot) {
@@ -24,7 +25,7 @@ client.on("messageDelete", (msg)=>{
   }
 })
 
-client.on("ready", () => {
+client.on("ready",() => {
   console.log("Bot is now picking up messages!")
 })
 
