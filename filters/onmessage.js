@@ -48,14 +48,15 @@ module.exports=(msg)=>{
     mydata["lastmessage"]=msg.content
     memdat[msg.author.id]=mydata
     fs.writeFileSync("./membermsg.json", JSON.stringify(memdat))
-    msg.channel.send("New reputation: " + mydata["reputation"])
+    var myrep=mydata["reputation"]
+    msg.channel.send("New reputation: " + 5*(1/(1+Math.pow(Math.E, -Math.sqrt(myrep)))))
   } else {
     memdat[msg.author.id]={
       "lastmessage": msg.content,
       "lmt": Date.now(),
-      "reputation": 100
+      "reputation": 0
     }
     fs.writeFileSync("./membermsg.json", JSON.stringify(memdat))
-    msg.channel.send("New reputation: 100")
+    msg.channel.send("New reputation: 0")
   }
 }
